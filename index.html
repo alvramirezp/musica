@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Musical de Educación Primaria</title>
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Aplicamos la fuente Inter por defecto */
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Estilo para simular la estructura de frames con CSS Grid */
+        /* En pantallas grandes (md y superiores), usamos dos columnas: 250px para el índice y el resto para el contenido. */
+        .desktop-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            height: calc(100vh - 4rem); /* Altura total menos la altura del encabezado (16 = 4rem) */
+            overflow: hidden;
+        }
+
+        /* Ocultamos el diseño de escritorio en móviles por defecto */
+        @media (max-width: 767px) {
+            .desktop-layout {
+                grid-template-columns: 1fr; /* Una sola columna en móvil */
+                height: auto;
+            }
+            #sidebar-nav {
+                display: none; /* Ocultar el menú de navegación en móvil inicialmente */
+                position: absolute;
+                top: 4rem;
+                left: 0;
+                width: 100%;
+                z-index: 20;
+                height: auto;
+                max-height: 80vh;
+                background-color: #f0f8ff; /* Fondo para que se vea bien sobre el contenido */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 1. Frame de Encabezamiento (Header) -->
+    <header class="fixed top-0 left-0 right-0 h-16 bg-blue-600 text-white shadow-lg flex items-center justify-between p-4 z-30">
+        <h1 class="text-2xl font-extrabold tracking-tight">
+            🎶 Rincón Musical de Educación Primaria 🎵
+        </h1>
+        <!-- Botón para alternar el índice en pantallas pequeñas -->
+        <button id="menu-toggle" class="md:hidden p-2 rounded-full hover:bg-blue-700 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+
+    <!-- Contenedor Principal (Simula la división del espacio restante) -->
+    <div class="pt-16">
+        <div class="desktop-layout">
+            <!-- 2. Frame de Índice/Navegación (Sidebar) -->
+            <nav id="sidebar-nav" class="bg-blue-50 border-r border-blue-200 p-4 overflow-y-auto">
+                <h2 class="text-lg font-semibold text-blue-700 mb-4 border-b pb-2">Índice de Aplicaciones</h2>
+                <ul id="app-index" class="space-y-2">
+                    <!-- Los enlaces actúan como secciones del índice -->
+                    <li>
+                        <a href="https://alvramirezp.github.io/ritmoymelodia/" 
+                           data-title="Ritmo y Melodía" 
+                           class="nav-link block p-3 rounded-lg text-blue-800 hover:bg-blue-200 transition duration-150 ease-in-out active:bg-blue-300 font-medium shadow-sm"
+                           target="_blank">
+                           🎵 Ritmo y Melodía
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://alvramirezp.github.io/compases/" 
+                           data-title="Compases y ritmo" 
+                           class="nav-link block p-3 rounded-lg text-blue-800 hover:bg-blue-200 transition duration-150 ease-in-out font-medium shadow-sm"
+                           target="_blank">
+                           🥁 Compases y Ritmo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://alvramirezp.github.io/instrumentos/" 
+                           data-title="Instrumentos Musicales" 
+                           class="nav-link block p-3 rounded-lg text-blue-800 hover:bg-blue-200 transition duration-150 ease-in-out font-medium shadow-sm"
+                           target="_blank">
+                           🎺 Instrumentos Musicales
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://alvramirezp.github.io/voces/" 
+                           data-title="Voces y agrupaciones" 
+                           class="nav-link block p-3 rounded-lg text-blue-800 hover:bg-blue-200 transition duration-150 ease-in-out font-medium shadow-sm"
+                           target="_blank">
+                           🎤 Voces y agrupaciones
+                        </a>
+                    </li>
+                    <li>
+                        <!-- Este enlace usa un placeholder, puedes sustituirlo cuando tengas la aplicación -->
+                        <a href="https://placehold.co/1000x800/c7d2fe/3730a3?text=App+5:+Compositores+Famosos" 
+                           data-title="Compositores Famosos" 
+                           class="nav-link block p-3 rounded-lg text-blue-800 hover:bg-blue-200 transition duration-150 ease-in-out font-medium shadow-sm"
+                           target="_blank">
+                           🎻 Compositores Famosos
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-8 pt-4 border-t border-blue-200">
+                     <p class="text-sm text-gray-500">
+                        © 2025 Álvaro Ramírez
+                    </p>
+                </div>
+            </nav>
+
+            <!-- Frame Principal de Contenido (Main App Area) -->
+            <main class="p-4 bg-white overflow-hidden">
+                <div class="h-full w-full flex flex-col rounded-xl shadow-xl border border-gray-200 overflow-hidden bg-gray-100">
+                    
+                    <div id="app-title-display" class="bg-gray-200 p-3 border-b border-gray-300 text-lg font-bold text-gray-700 flex items-center space-x-2">
+                        <!-- Título dinámico de la aplicación cargada -->
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3m2-7H9.75a7.5 7.5 0 01-5.75 2.75V15h12V9.75a7.5 7.5 0 01-5.75-2.75"></path></svg>
+                        <span>Ritmo y Melodía</span>
+                    </div>
+
+                    <!-- El iframe simula el 'frame' de contenido donde se cargan las apps -->
+                    <iframe id="app-frame" 
+                            src="https://alvramirezp.github.io/ritmoymelodia/" 
+                            class="w-full h-full border-0 bg-white" 
+                            frameborder="0"
+                            title="Contenido de la Aplicación Musical">
+                    </iframe>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appIndex = document.getElementById('app-index');
+            const appFrame = document.getElementById('app-frame');
+            const appTitleDisplay = document.querySelector('#app-title-display span');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebarNav = document.getElementById('sidebar-nav');
+            
+            // Función para actualizar el iFrame y el título
+            function loadApp(url, title, linkElement) {
+                appFrame.src = url;
+                appTitleDisplay.textContent = title;
+
+                // Restablecer el estado visual de los enlaces
+                navLinks.forEach(link => {
+                    link.classList.remove('bg-blue-300', 'ring-2', 'ring-blue-500');
+                });
+                if (linkElement) {
+                    linkElement.classList.add('bg-blue-300', 'ring-2', 'ring-blue-500');
+                }
+            }
+
+            // Manejador de clics en los enlaces del índice
+            appIndex.addEventListener('click', (event) => {
+                const link = event.target.closest('.nav-link');
+                if (link) {
+                    event.preventDefault(); // Previene la navegación estándar
+                    
+                    const url = link.getAttribute('href');
+                    const title = link.getAttribute('data-title');
+
+                    loadApp(url, title, link);
+
+                    // Ocultar el menú lateral en móvil después de hacer clic
+                    if (window.innerWidth < 768) {
+                        sidebarNav.style.display = 'none';
+                    }
+                }
+            });
+
+            // Lógica inicial: cargar el primer elemento y destacarlo
+            const initialLink = navLinks[0];
+            if (initialLink) {
+                // Modificado para usar la función loadApp con el enlace correcto como argumento
+                loadApp(initialLink.getAttribute('href'), initialLink.getAttribute('data-title'), initialLink);
+            }
+
+            // Manejador del botón de menú para móvil
+            menuToggle.addEventListener('click', () => {
+                const isHidden = sidebarNav.style.display === 'none' || sidebarNav.style.display === '';
+                sidebarNav.style.display = isHidden ? 'block' : 'none';
+            });
+
+            // Asegurar que el menú esté visible en desktop si la ventana se redimensiona
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    sidebarNav.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
