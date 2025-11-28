@@ -37,6 +37,10 @@
                 background-color: #f0f8ff; /* Fondo para que se vea bien sobre el contenido */
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
+            /* MODIFICACIÓN CLAVE: Asegura que el área principal de contenido sea alta en móviles */
+            main {
+                min-height: calc(100vh - 4rem); /* Min-altura = Altura de la ventana - Altura del encabezado (4rem) */
+            }
         }
     </style>
 </head>
